@@ -16,8 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from authapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("authapp.urls"))
+    path('',include('authapp.urls')),
+    path('_reload_/', include('django_browser_reload.urls')),
+    path('base/', views.Home, name="base"),
+    path('signup/', views.Signup, name="signup"),
+    path('login/', views.Login, name="login"),
+    path('navbar/', views.navbar, name='navbar'),
+
+    
 ]
